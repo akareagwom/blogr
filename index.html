@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | [Blogr]</title>
+
+  <link rel="stylesheet" href="assets/css/tailwind.css">
+
+</head>
+<body class="overflow-x-hidden font-ubuntu text-body" x-data="{ atTop: true, open: false }" x-on:scroll.window="atTop = (window.pageYOffset > 100) ? false : true;">
+  <header class="fixed top-0 z-20 w-screen" >
+    <nav x-data="{isNavOpen: false}" class="flex items-center justify-between px-5 text-gray-600 transition-all lg:text-white lg:px-20 " :class="atTop ? 'py-9' : 'py-4 bg-ctaText'">
+      <img src="assets/images/logo.svg" alt="">
+
+      <div class="block lg:hidden" @click="isNavOpen = !isNavOpen">
+        <img src="assets/images/icon-hamburger.svg" :class="isNavOpen ? 'hidden' : 'block'" alt="">
+        <img src="assets/images/icon-close.svg" :class="isNavOpen ? 'block' : 'hidden'" alt="">
+      </div>
+
+      <div class="absolute flex flex-col items-center w-11/12 py-8 pl-0 font-medium transform -translate-x-1/2 bg-white lg:translate-x-0 left-1/2 lg:w-full lg:py-0 lg:flex-row lg:bg-transparent lg:justify-between lg:static lg:pl-14"
+      :class="isNavOpen ? ' transition-all top-24' : 'transition-all -top-96'">
+        <div class="flex flex-col items-center lg:flex-row gap-7">
+          <div class="relative flex flex-col items-center lg:inline-block" x-data="{ isOpen: false}">
+            <button @click="isOpen = !isOpen" @keydown.escape="isOpen = false" class="flex items-center gap-2 font-medium focus:outline-none" >
+              Product
+              <img src="assets/images/icon-arrow-light.svg" class="arrow" :class="isOpen ? 'transition transform rotate-180' : 'transition' " alt="">
+            </button>
+            <div x-show="isOpen" @click.away="isOpen = false" 
+                class="z-20 flex flex-col w-64 gap-5 px-6 py-5 mt-6 text-sm font-normal text-center text-gray-900 bg-gray-200 rounded lg:text-left lg:-translate-x-1/2 lg:transform lg:shadow-lg lg:bg-white lg:w-40 lg:absolute left-1/2">
+              <a href="#" class="hover:font-bold">Overview</a>
+              <a href="#" class="hover:font-bold">Marketplace</a>
+              <a href="#" class="hover:font-bold">Features</a>
+              <a href="#" class="hover:font-bold">Integrations</a>
+            </div>
+          </div>
+
+          <div class="relative flex flex-col items-center lg:inline-block" x-data="{ isOpen: false}">
+            <button @click="isOpen = !isOpen" @keydown.escape="isOpen = false" class="flex items-center gap-2 font-medium focus:outline-none" >
+              Company
+              <img src="assets/images/icon-arrow-light.svg" class="arrow" :class="isOpen ? 'transition transform rotate-180' : 'transition' " alt="">
+            </button>
+            <div x-show="isOpen" @click.away="isOpen = false" 
+              class="z-20 flex flex-col w-64 gap-5 px-6 py-5 mt-6 text-sm font-normal text-center text-gray-900 bg-gray-200 rounded lg:text-left lg:-translate-x-1/2 lg:transform lg:shadow-lg lg:bg-white lg:w-40 lg:absolute left-1/2">
+              <a href="#" class="hover:font-bold">About</a>
+              <a href="#" class="hover:font-bold">Team</a>
+              <a href="#" class="hover:font-bold">Careers</a>
+              <a href="#" class="hover:font-bold">Blog</a>
+            </div>
+          </div>
+
+          <div class="relative flex flex-col items-center lg:inline-block" x-data="{ isOpen: false}">
+            <button @click="isOpen = !isOpen" @keydown.escape="isOpen = false" class="flex items-center gap-2 font-medium focus:outline-none" >
+              Connect
+              <img src="assets/images/icon-arrow-light.svg" class="arrow" :class="isOpen ? 'transition transform rotate-180' : 'transition' " alt="">
+            </button>
+            <div x-show="isOpen" @click.away="isOpen = false" 
+              class="z-20 flex flex-col w-64 gap-5 px-6 py-5 mt-6 text-sm font-normal text-center text-gray-900 bg-gray-200 rounded lg:text-left lg:-translate-x-1/2 lg:transform lg:shadow-lg lg:bg-white lg:w-40 lg:absolute left-1/2">
+              <a href="#" class="hover:font-bold">Contact</a>
+              <a href="#" class="hover:font-bold">Newsletter</a>
+              <a href="#" class="hover:font-bold">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center w-full mt-5 font-bold border-t border-gray-300 lg:border-none pt-9 lg:w-max lg:mt-0 lg:pt-0 lg:flex-row gap-7">
+          <a href="#">Login</a>
+          <a href="">
+            <button class="py-2 font-bold text-white bg-gradient-to-l from-lr to-vlr lg:from-white lg:to-white px-7 rounded-3xl lg:text-ctaText lg:hover:from-ctaHover lg:hover:to-ctaHover hover:text-white">Sign Up</button>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="h-auto px-4 pb-32 text-center text-white bg-no-repeat bg-patternIntro intro pt-44 lg:px-0 rounded-bl-extra">
+      <h1 class="text-4xl lg:text-6xl">A modern publishing platform</h1>
+      <p class="mt-6 mb-8 text-lg text-gray-100">Grow your audience and build your online brand</p>
+      <div>
+        <button class="px-5 py-2 mr-3 font-bold bg-white rounded-3xl hover:bg-ctaHover text-ctaText hover:text-white">Start for Free</button>
+        <button class="px-5 py-2 font-bold text-white border border-white rounded-3xl hover:bg-white hover:text-ctaHover ">Learn More</button>
+      </div>
+    </section>
+
+    <section class="py-20 pb-44 lg:pb-0 lg:py-32">
+      <h2 class="text-3xl text-center lg:text-4xl mb-28">Designed for the future</h2>
+      <div class="relative flex flex-col items-center gap-8 text-center lg:gap-0 lg:flex-row lg:text-left ">
+        <div class="order-2 w-full pl-5 pr-5 lg:pr-10 lg:w-3/5 lg:pl-32 lg:order-1">
+          <h3 class="mb-5 text-3xl">Introducing an extensible editor</h3>
+          <p class="mb-11">
+            Blogr features an exceedingly intuitive interface which lets you focus on one thing: creating content. 
+            The editor supports management of multiple blogs and allows easy manipulation of embeds such as images, 
+            videos, and Markdown. Extensibility with plugins and themes provide easy ways to add functionality or 
+            change the looks of a blog.
+          </p>
+          <h3 class="mb-5 text-3xl">Robust content management</h3>
+          <p>
+            Flexible content management enables users to easily move through posts. Increase the usability of your blog 
+            by adding customized categories, sections, format, or flow. With this functionality, you’re in full control.
+          </p>
+        </div>
+        <img src="assets/images/illustration-editor-desktop.svg" class="order-1 w-full lg:absolute -right-48 lg:w-1/2 lg:order-2 editor" alt="">
+      </section>
+
+      <section class="relative flex flex-col items-start pr-0 mt-24 text-white bg-no-repeat lg:mt-56 bg-patternCircle state rounded-bl-extra rounded-tr-extra lg:flex-row py-28 lg:pr-36">
+        <img src="assets/images/illustration-phones.svg" class="absolute -top-1/3 lg:-top-20 lg:left-28 " alt="">
+        <div class="max-w-full px-5 text-center lg:px-0 lg:ml-auto lg:max-w-lg mt-28 lg:mt-0">
+          <h2 class="mb-8 text-4xl"> State of the Art Infrastructure</h2>
+          <p>
+            With reliability and speed in mind, worldwide data centers provide the backbone for ultra-fast connectivity. 
+            This ensures your site will load instantly, no matter where your readers are, keeping your site competitive.
+          </p>
+        </div>
+      </section>
+
+    <section class="relative flex flex-col items-center gap-10 py-16 pr-0 mt-8 mb-20 lg:mb-40 lg:gap-0 lg:flex-row lg:pr-36 lg:mt-52">
+      <img src="assets/images/illustration-laptop-desktop.svg" class="w-full lg:absolute -left-64 lg:w-2/3 laptop" alt="">
+      <div class="max-w-full px-5 text-center lg:px-0 lg:ml-auto lg:max-w-lg lg:text-left">
+        <h3 class="mb-5 text-3xl">Free, open, simple</h3>
+        <p class="mb-11">
+          Blogr is a free and open source application backed by a large community of helpful developers. It supports 
+          features such as code syntax highlighting, RSS feeds, social media integration, third-party commenting tools, 
+          and works seamlessly with Google Analytics. The architecture is clean and is relatively easy to learn.
+        </p>
+        <h3 class="mb-5 text-3xl">Powerful tooling</h3>
+        <p>
+          Batteries included. We built a simple and straightforward CLI tool that makes customization and deployment a breeze, but
+          capable of producing even the most complicated sites.
+        </p>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="px-5 py-16 mt-20 font-semibold text-center lg:mt-48 rounded-tr-extra bg-footer lg:px-36 lg:text-left">
+    <div class="flex flex-col items-center gap-16 lg:items-start lg:flex-row lg:gap-44">
+      <div>
+        <img src="assets/images/logo.svg" alt="">
+      </div>
+  
+      <div class="flex flex-col gap-16 text-sm text-gray-400 lg:flex-row lg:gap-44 ">
+        <div class="flex flex-col gap-3">
+          <a href="#" class="mb-4 text-white">Product</a>
+          <a href="#" class="hover:underline">Overview</a>
+          <a href="#" class="hover:underline">Pricing</a>
+          <a href="#" class="hover:underline">Marketplace</a>
+          <a href="#" class="hover:underline">Features</a>
+          <a href="#" class="hover:underline">Integrations</a>
+        </div>
+        <div class="flex flex-col gap-3">
+          <a href="#" class="mb-4 text-white">Company</a>
+          <a href="#" class="hover:underline">About</a>
+          <a href="#" class="hover:underline">Team</a>
+          <a href="#" class="hover:underline">Careers</a>
+          <a href="#" class="hover:underline">Blog</a>
+        </div>
+        <div class="flex flex-col gap-3">
+          <a href="#" class="mb-4 text-white">Connect</a>
+          <a href="#" class="hover:underline">Contact</a>
+          <a href="#" class="hover:underline">Newsletter</a>
+          <a href="#" class="hover:underline">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+
+
+  </footer>
+
+  <script defer src="https://unpkg.com/alpinejs@3.1.0/dist/cdn.min.js"></script>
+
+</body>
+</html>
